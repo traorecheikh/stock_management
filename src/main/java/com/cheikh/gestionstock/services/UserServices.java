@@ -27,7 +27,7 @@ public class UserServices {
     // Instantiate BCryptPasswordEncoder (you can also inject it via Spring if you're using Spring)
     private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public static int Register(User user) {
+    public int Register(User user) {
         em = getEM();
         Object o = em.createQuery("select u from User u where u.email = :email")
                 .setParameter("email", user.getEmail())
@@ -55,7 +55,7 @@ public class UserServices {
         }
     }
 
-    public static boolean Login(String email, String password) {
+    public boolean Login(String email, String password) {
         em = getEM();
 
         Object o = em.createQuery("select u from User u where u.email = :email")
@@ -69,7 +69,6 @@ public class UserServices {
 
         User user = (User) o;
 
-        // Use BCryptPasswordEncoder to check if the password matches
         if (passwordEncoder.matches(password, user.getPassword())) {
             String sessionKey = UUID.randomUUID().toString();
 
@@ -99,12 +98,12 @@ public class UserServices {
         return false;
     }
 
-    public static void Logout() {
+    public void Logout() {
         setUserSession(null);
         log.info("Utilisateur déconnecté avec succès.");
     }
 
-    public static User checkSession() {
+    public static  User checkSession() {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(sessions)) {
             for (Path entry : stream) {
                 String sessionKey = new String(Files.readAllBytes(entry));
@@ -134,7 +133,7 @@ public class UserServices {
         return Files.exists(sessionFile);
     }
 
-    public static boolean addAdmin(User admin, User newAdmin) {
+    public boolean addAdmin(User admin, User newAdmin) {
         if (!admin.isAdmin()) {
             log.warn("L'utilisateur avec l'email {} n'est pas un administrateur, action interdite.", admin.getEmail());
             return false;
@@ -154,7 +153,7 @@ public class UserServices {
         }
     }
 
-    public static boolean removeAdmin(User admin, User targetUser) {
+    public boolean removeAdmin(User admin, User targetUser) {
         if (!admin.isAdmin()) {
             log.warn("L'utilisateur avec l'email {} n'est pas un administrateur, action interdite.", admin.getEmail());
             return false;
