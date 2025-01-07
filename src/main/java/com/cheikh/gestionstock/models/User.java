@@ -1,6 +1,7 @@
 package com.cheikh.gestionstock.models;
 
 import jakarta.persistence.*;
+import jdk.jfr.BooleanFlag;
 import lombok.*;
 
 @Entity
@@ -18,6 +19,8 @@ public class User {
     private String nom;
     private String email;
     private String password;
-    private String role;
+    @Column(updatable = false, nullable = false)
+    @BooleanFlag
+    private boolean admin;
     private String sessionKey = null;
 }

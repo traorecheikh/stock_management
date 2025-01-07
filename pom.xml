@@ -62,6 +62,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>6.3.0</version> <!-- Choose the appropriate version -->
+        </dependency>
     </dependencies>
 
     <build>

@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
@@ -23,6 +24,9 @@ public class UserServices {
     private static EntityManager em;
     private static final Path sessions = Paths.get("sessions");
 
+    // Instantiate BCryptPasswordEncoder (you can also inject it via Spring if you're using Spring)
+    private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public static int Register(User user) {
         em = getEM();
         Object o = em.createQuery("select u from User u where u.email = :email")
@@ -35,10 +39,14 @@ public class UserServices {
         }
 
         try {
+            // Hash the password using BCryptPasswordEncoder
+            String hashedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hashedPassword);
+
             em.getTransaction().begin();
             em.persist(user);
             em.getTransaction().commit();
-            log.info("Utilisateur enregistré avec succès avec l'email {}", user.getEmail());
+            log.info("Utilisateur enregistré avec succès avec l'email {}.", user.getEmail());
             return 0;
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -61,7 +69,8 @@ public class UserServices {
 
         User user = (User) o;
 
-        if (user.getPassword().equals(password)) {
+        // Use BCryptPasswordEncoder to check if the password matches
+        if (passwordEncoder.matches(password, user.getPassword())) {
             String sessionKey = UUID.randomUUID().toString();
 
             user.setSessionKey(sessionKey);
@@ -79,7 +88,6 @@ public class UserServices {
 
                 setUserSession(user);
                 log.info("Utilisateur avec l'email {} connecté avec succès, clé de session générée.", email);
-
                 return true;
             } catch (IOException e) {
                 log.error("Erreur lors de la création du fichier de session pour l'utilisateur avec l'email {}: {}", email, e.getMessage());
@@ -124,5 +132,45 @@ public class UserServices {
     private static boolean isSessionValid(String sessionKey) {
         Path sessionFile = sessions.resolve(sessionKey);
         return Files.exists(sessionFile);
+    }
+
+    public static boolean addAdmin(User admin, User newAdmin) {
+        if (!admin.isAdmin()) {
+            log.warn("L'utilisateur avec l'email {} n'est pas un administrateur, action interdite.", admin.getEmail());
+            return false;
+        }
+
+        try {
+            newAdmin.setAdmin(true);
+            em.getTransaction().begin();
+            em.merge(newAdmin);
+            em.getTransaction().commit();
+            log.info("L'utilisateur avec l'email {} a été ajouté en tant qu'administrateur par {}.", newAdmin.getEmail(), admin.getEmail());
+            return true;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            log.error("Erreur lors de l'ajout de l'utilisateur {} en tant qu'administrateur: {}", newAdmin.getEmail(), e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean removeAdmin(User admin, User targetUser) {
+        if (!admin.isAdmin()) {
+            log.warn("L'utilisateur avec l'email {} n'est pas un administrateur, action interdite.", admin.getEmail());
+            return false;
+        }
+
+        try {
+            targetUser.setAdmin(false);
+            em.getTransaction().begin();
+            em.merge(targetUser);
+            em.getTransaction().commit();
+            log.info("L'utilisateur avec l'email {} a été retiré des administrateurs par {}.", targetUser.getEmail(), admin.getEmail());
+            return true;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            log.error("Erreur lors du retrait de l'utilisateur {} en tant qu'administrateur: {}", targetUser.getEmail(), e.getMessage());
+            return false;
+        }
     }
 }
