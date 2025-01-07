@@ -1,12 +1,12 @@
 package com.cheikh.gestionstock.services;
 
+import com.cheikh.gestionstock.HelloApplication;
 import com.cheikh.gestionstock.models.User;
 import jakarta.persistence.EntityManager;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.IOException;
@@ -20,15 +20,13 @@ import java.util.UUID;
 import static com.cheikh.gestionstock.services.EntityManagerUtils.getEM;
 
 public class UserServices {
-    private static final Logger log = Logger.getLogger(UserServices.class);
+    private static final Logger log = LoggerFactory.getLogger(UserServices.class);
 
     @Setter
     @Getter
     private static User userSession;
     private static EntityManager em;
     private static final Path sessions = Paths.get("sessions");
-
-    // Instantiate BCryptPasswordEncoder (you can also inject it via Spring if you're using Spring)
     private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public int Register(User user) {
@@ -39,6 +37,7 @@ public class UserServices {
 
         if (o != null) {
             log.warn("L'utilisateur existe déjà avec l'email {}");
+            log.error("Erreur lorsque lutilisateur "+user.getPrenom()+" "+user.getNom()+" a essayer de sinscrire avec un l'email "+user.getEmail() +" deja existant");
             return 2;
         }
 
@@ -93,7 +92,8 @@ public class UserServices {
                 log.info("Utilisateur avec l'email {} connecté avec succès, clé de session générée.");
                 return true;
             } catch (IOException e) {
-                log.error("Erreur lors de la création du fichier de session pour l'utilisateur avec l'email {}: {}");
+                final Logger logger = (Logger) LoggerFactory.getLogger(HelloApplication.class);
+                logger.error("Erreur lors de la création du fichier de session pour l'utilisateur avec l'email {}: {}");
                 return false;
             }
         }
@@ -121,7 +121,7 @@ public class UserServices {
                     User user = (User) o;
                     if (isSessionValid(user.getSessionKey())) {
                         setUserSession(user);
-                        log.info("Session valide trouvée pour l'utilisateur avec l'email {}");
+                        log.info("Session valide trouvée pour l'utilisateur avec l'email "+user.getEmail());
                         return user;
                     }
                 }

@@ -18,6 +18,7 @@ public class User {
     private Long id;
     private String prenom;
     private String nom;
+    @Column(unique = true)
     private String email;
     private String password;
     @Column(updatable = false, nullable = false)

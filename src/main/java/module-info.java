@@ -9,7 +9,8 @@ module com.cheikh.gestionstock {
     requires org.slf4j;
     requires mysql.connector.j;
     requires org.hibernate.orm.core;
-    requires log4j;
+    requires ch.qos.logback.classic;
+    requires ch.qos.logback.core;
     opens com.cheikh.gestionstock to javafx.fxml;
     opens com.cheikh.gestionstock.models to org.hibernate.orm.core,javafx.fxml,javafx.base;
     exports com.cheikh.gestionstock;
