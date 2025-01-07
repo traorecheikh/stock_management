@@ -60,12 +60,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.34</version>
+            <version>1.18.36</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>6.3.0</version> <!-- Choose the appropriate version -->
+            <version>6.3.5</version> <!-- Choose the appropriate version -->
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
