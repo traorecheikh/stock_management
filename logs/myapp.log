@@ -1,0 +1,83 @@
+2025-01-10 16:44:29 [JavaFX Application Thread] ERROR c.c.g.services.UserServices - Erreur lors de la vérification de la session
+2025-01-10 16:44:29 [JavaFX Application Thread] WARN  c.c.g.services.UserServices - Aucune session valide trouvée.
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: pu]
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-10 16:44:30 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/stockmanagement]
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-01-10 16:44:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-01-10 16:44:32 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@78a22563] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-01-10 16:44:57 [JavaFX Application Thread] WARN  c.c.g.services.UserServices - Mot de passe incorrect pour l'utilisateur avec l'email cheikh@gmail.com
+2025-01-10 16:45:38 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Utilisateur avec l'email cheikh@gmail.com connecté avec succès, clé de session générée.
+2025-01-10 16:45:38 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Session valide trouvée pour l'utilisateur avec l'email cheikh@gmail.com
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: pu]
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-10 16:46:52 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/stockmanagement]
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-01-10 16:46:52 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-01-10 16:46:54 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@589e24c0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-01-10 16:46:54 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Session valide trouvée pour l'utilisateur avec l'email cheikh@gmail.com
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: pu]
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-10 16:55:23 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/stockmanagement]
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-01-10 16:55:23 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-01-10 16:55:25 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@704f1975] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-01-10 16:55:25 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Session valide trouvée pour l'utilisateur avec l'email cheikh@gmail.com
+2025-01-10 17:01:15 [JavaFX Application Thread] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: pu]
+2025-01-10 17:01:16 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-01-10 17:01:16 [JavaFX Application Thread] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-10 17:01:16 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-01-10 17:01:16 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-01-10 17:01:16 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/stockmanagement]
+2025-01-10 17:01:16 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+2025-01-10 17:01:16 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-01-10 17:01:16 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-01-10 17:01:17 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2cdb3883] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-01-10 17:01:18 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Session valide trouvée pour l'utilisateur avec l'email cheikh@gmail.com
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: pu]
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-10 17:04:00 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/stockmanagement]
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-01-10 17:04:00 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-01-10 17:04:02 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@360eefde] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-01-10 17:04:02 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Session valide trouvée pour l'utilisateur avec l'email cheikh@gmail.com
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: pu]
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-10 17:05:48 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/stockmanagement]
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-01-10 17:05:48 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-01-10 17:05:49 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@661a1a64] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-01-10 17:05:50 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Session valide trouvée pour l'utilisateur avec l'email cheikh@gmail.com
+2025-01-10 17:05:51 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Session file deleted: sessions/8c2d2a57-5de5-4c19-83b3-b29fc67bb3e2
+2025-01-10 17:05:51 [JavaFX Application Thread] INFO  c.c.g.services.UserServices - Utilisateur déconnecté avec succès.
+2025-01-10 17:10:29 [JavaFX Application Thread] WARN  c.c.g.services.UserServices - Aucune session valide trouvée.
+2025-01-10 17:10:29 [JavaFX Application Thread] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: pu]
+2025-01-10 17:10:29 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-01-10 17:10:29 [JavaFX Application Thread] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-10 17:10:30 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-01-10 17:10:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: com.mysql.cj.jdbc.Driver
+2025-01-10 17:10:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:mysql://localhost:3306/stockmanagement]
+2025-01-10 17:10:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+2025-01-10 17:10:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-01-10 17:10:30 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-01-10 17:10:31 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7a01bf8] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.

@@ -36,24 +36,22 @@ public class UserServices {
                 .getSingleResultOrNull();
 
         if (o != null) {
-            log.warn("L'utilisateur existe déjà avec l'email {}");
-            log.error("Erreur lorsque lutilisateur "+user.getPrenom()+" "+user.getNom()+" a essayer de sinscrire avec un l'email "+user.getEmail() +" deja existant");
+            log.warn("Erreur lorsque lutilisateur "+user.getPrenom()+" "+user.getNom()+" a essayer de sinscrire avec un l'email "+user.getEmail() +" deja existant");
             return 2;
         }
 
         try {
-            // Hash the password using BCryptPasswordEncoder
             String hashedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashedPassword);
 
             em.getTransaction().begin();
             em.persist(user);
             em.getTransaction().commit();
-            log.info("Utilisateur enregistré avec succès avec l'email {}.");
+            log.info("Utilisateur enregistré avec succès avec l'email {}.",user.getEmail());
             return 0;
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error("Erreur lors de l'enregistrement de l'utilisateur avec l'email {}: {}");
+            log.error("Erreur lors de l'enregistrement de l'utilisateur avec l'email "+user.getEmail());
             return 1;
         }
     }
@@ -66,7 +64,7 @@ public class UserServices {
                 .getSingleResultOrNull();
 
         if (o == null) {
-            log.warn("Utilisateur non trouvé avec l'email {}");
+            log.warn("Utilisateur non trouvé avec l'email "+email);
             return false;
         }
 
@@ -89,26 +87,40 @@ public class UserServices {
                 Files.write(sessionFile, sessionKey.getBytes());
 
                 setUserSession(user);
-                log.info("Utilisateur avec l'email {} connecté avec succès, clé de session générée.");
+                log.info("Utilisateur avec l'email {} connecté avec succès, clé de session générée.",user.getEmail());
                 return true;
             } catch (IOException e) {
                 final Logger logger = (Logger) LoggerFactory.getLogger(HelloApplication.class);
-                logger.error("Erreur lors de la création du fichier de session pour l'utilisateur avec l'email {}: {}");
+                logger.error("Erreur lors de la création du fichier de session pour l'utilisateur avec l'email {}",userSession.getEmail());
                 return false;
             }
         }
 
-        log.warn("Mot de passe incorrect pour l'utilisateur avec l'email {}");
+        log.warn("Mot de passe incorrect pour l'utilisateur avec l'email {}",user.getEmail());
         return false;
     }
 
-    public void Logout() throws IOException {
-        setUserSession(null);
-        Files.delete(sessions);
-        log.info("Utilisateur déconnecté avec succès.");
-    }
+    public void Logout() {
+        setUserSession(null);  // Nullify the user session
 
+        try {
+            Files.walk(sessions)
+                    .filter(Files::isRegularFile)
+                    .forEach(file -> {
+                        try {
+                            Files.delete(file);
+                            log.info("Session file deleted: {}", file);
+                        } catch (IOException e) {
+                            log.warn("Failed to delete session file: {} due to {}", file, e.getMessage());
+                        }
+                    });
+            log.info("Utilisateur déconnecté avec succès.");
+        } catch (IOException e) {
+            log.error("Error while walking through session files: " + e.getMessage());
+        }
+    }
     public static  User checkSession() {
+
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(sessions)) {
             for (Path entry : stream) {
                 String sessionKey = new String(Files.readAllBytes(entry));
@@ -121,15 +133,15 @@ public class UserServices {
                     User user = (User) o;
                     if (isSessionValid(user.getSessionKey())) {
                         setUserSession(user);
-                        log.info("Session valide trouvée pour l'utilisateur avec l'email "+user.getEmail());
+                        log.info("Session valide trouvée pour l'utilisateur avec l'email {}", user.getEmail());
                         return user;
                     }
                 }
             }
         } catch (IOException e) {
-            log.error("Erreur lors de la vérification de la session: {}");
+            log.warn("Aucune session valide trouvée.");
+            return null;
         }
-        log.warn("Aucune session valide trouvée.");
         return null;
     }
 
@@ -140,7 +152,7 @@ public class UserServices {
 
     public boolean addAdmin(User admin, User newAdmin) {
         if (!admin.isAdmin()) {
-            log.warn("L'utilisateur avec l'email {} n'est pas un administrateur, action interdite.");
+            log.warn("L'utilisateur avec l'email {} n'est pas un administrateur, action interdite.",userSession.getEmail());
             return false;
         }
 
@@ -173,7 +185,7 @@ public class UserServices {
             return true;
         } catch (Exception e) {
             em.getTransaction().rollback();
-            log.error("Erreur lors du retrait de l'utilisateur {} en tant qu'administrateur: {}");
+            log.error("Erreur lors du retrait de l'utilisateur {} en tant qu'administrateur: {}",e.getMessage());
             return false;
         }
     }
